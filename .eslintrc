@@ -1,0 +1,47 @@
+{
+  "extends": ["airbnb", "prettier", "plugin:jsx-a11y/recommended"],
+  "plugins": ["prettier", "react-hooks", "jsx-a11y"],
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "_INJECTED": "readonly"
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "prettier/prettier": ["error"],
+    // React rules
+    "react/jsx-uses-react": "off", // 17
+    "react/react-in-jsx-scope": "off", // 17
+    "react/destructuring-assignment": "off",
+    "react/jsx-fragments": ["error", "element"],
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".js"] }],
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-curly-newline": "off",
+    "react/no-multi-comp": ["off", { "ignoreStateless": true }],
+    "react/no-unescaped-entities": "off",
+    "react/no-danger": "warn",
+    "react/prop-types": "off",
+    "react/no-array-index-key": "warn",
+    "react/jsx-wrap-multilines": "off",
+    // React hooks rules
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "off",
+    // JS rules
+    "max-classes-per-file": "off",
+    "no-underscore-dangle": "off",
+    "func-names": "off",
+    "no-plusplus": "off",
+    "import/prefer-default-export": "off",
+    "import/extensions": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  }
+}
