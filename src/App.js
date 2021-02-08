@@ -1,21 +1,32 @@
 import styled from "styled-components";
 import { StoreProvider, createStore } from "easy-peasy";
-import Router from "./router/index";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import model from "./model";
+import Header from "./components/Header";
+import List from "./components/List";
+import Details from "./components/Details";
+import Cart from "./components/Cart";
 
 const store = createStore(model);
 
 const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 60px auto;
 `;
 
 const App = () => {
   return (
     <StoreProvider store={store}>
       <AppContainer>
-        <Router />
+        <Router>
+          <Header />
+          <Switch>
+            <Route exact path="/" component={List} />
+            <Route path="/product/:id" component={Details} />
+            <Route path="/cart" component={Cart} />
+          </Switch>
+        </Router>
       </AppContainer>
     </StoreProvider>
   );
