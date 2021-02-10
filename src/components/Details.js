@@ -1,7 +1,39 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
 import { useStoreState, useStoreActions } from "easy-peasy";
+
+const DetailsContainer = styled.div`
+  padding: 60px 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+`;
+
+const Options = styled.button`
+  padding: 10px;
+  margin: 0px 10px 0px 0px;
+  max-width: 125px;
+  color: white;
+  background-color: black;
+  border-radius: 6px;
+  border: none;
+  :focus {
+    outline: #9f68d4 auto 2px;
+  }
+`;
+
+const AddToCartButton = styled.button`
+  background-color: #9f68d4;
+  border-radius: 6px;
+  border: none;
+  width: 150px;
+  height: 60px;
+  :focus {
+    outline: black auto 2px;
+  }
+`;
 
 const Details = () => {
   const { id } = useParams();
@@ -46,26 +78,19 @@ const Details = () => {
 
   console.log(localOptions);
   return (
-    <div>
-      <div>productId: {productId}</div>
-      <div>name: {name}</div>
-      <div>brand: {brand}</div>
-      <div>price: {price}</div>
-      <div>available: {available ? "yes" : "no"}</div>
-      <div>weight: {weight}</div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-evenly",
-          width: "100px",
-        }}
-      >
+    <DetailsContainer>
+      <div>Product Id: {productId}</div>
+      <div>Name: {name}</div>
+      <div>Brand: {brand}</div>
+      <div>Price: {price}</div>
+      <div>Available: {available ? "yes" : "no"}</div>
+      <div>Weight: {weight}</div>
+      <div>
         {/* product options - DOES NOT CHANGE */}
         {options.map((option, idx) => (
-          <button type="button" key={option.color} onClick={() => handleSelectOption(idx)}>
+          <Options type="button" key={option.color} onClick={() => handleSelectOption(idx)}>
             {option.color}
-          </button>
+          </Options>
         ))}
 
         {/* local options, THESE CHANGE */}
@@ -74,10 +99,14 @@ const Details = () => {
       </div>
 
       {/* send the product with the chosen options to the cart */}
-      <button type="button" onClick={() => handleAddToCart({ ...product, options: localOptions })}>
+      <AddToCartButton
+        className="addToCart"
+        type="button"
+        onClick={() => handleAddToCart({ ...product, options: localOptions })}
+      >
         Add To Cart
-      </button>
-    </div>
+      </AddToCartButton>
+    </DetailsContainer>
   );
 };
 
