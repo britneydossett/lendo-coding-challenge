@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { StoreProvider, createStore } from "easy-peasy";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import GlobalStyle from "./globalStyles";
 
 import model from "./model";
 import Header from "./components/Header";
@@ -18,6 +19,7 @@ const AppContainer = styled.div`
 const App = () => {
   return (
     <StoreProvider store={store}>
+      <GlobalStyle />
       <AppContainer>
         <Router>
           <Header />
