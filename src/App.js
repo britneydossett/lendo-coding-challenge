@@ -5,6 +5,7 @@ import GlobalStyle from "./globalStyles";
 
 import model from "./model";
 import Header from "./components/Header";
+import Toast from "./components/Toast";
 import List from "./components/List";
 import Details from "./components/Details";
 import Cart from "./components/Cart";
@@ -23,6 +24,7 @@ const App = () => {
       <AppContainer>
         <Router>
           <Header />
+          <Toast />
           <Switch>
             <Route exact path="/" component={List} />
             <Route path="/product/:id" component={Details} />

@@ -24,7 +24,7 @@ export default {
   }),
 
   onCartUpdate: actionOn(
-    // listening to all of these actions to perform this update.
+    // listening to all of the following actions to perform this update.
     (actions) => [actions.decrementQuantity, actions.incrementQuantity, actions.removeFromCart],
     (state, { payload }) => {
       // we need to update the product in the cart with the new total.
@@ -36,16 +36,11 @@ export default {
   ),
 
   addToCart: action((state, payload) => {
-    if (!payload.available) {
-      alert("item is not available");
-    }
     // we need this to keep track of the quantity on each product
     const cartProduct = state.cart.find((p) => p.id === payload.id);
     const productExists = state.cart.some((p) => p.id === payload.id);
-    const compareOptions = state.cart.find((p) => p.options.color === payload.options.color);
-    console.log("Add to cart---", compareOptions);
 
-    if (productExists && compareOptions) {
+    if (productExists) {
       const updatedProduct = {
         ...payload,
         quantity: (cartProduct.quantity += 1),
@@ -56,7 +51,11 @@ export default {
       state.cart[index] = updatedProduct;
     } else {
       // save the first instance of the product in the cart
-      state.cart.push({ ...payload, quantity: 1, total: payload.price });
+      state.cart.push({
+        ...payload,
+        quantity: 1,
+        total: payload.price,
+      });
     }
   }),
 

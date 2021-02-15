@@ -7,15 +7,20 @@ const ListContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   padding: 50px;
+`;
 
-  a:link {
-    color: #9f68d4;
-    background-color: transparent;
-    text-decoration: none;
-  }
+const LinkStyle = styled(Link)`
+  text-decoration: none;
+  box-shadow: 0px 1px 4px #888888;
+  padding: 20px;
+`;
 
-  a:visited {
-    color: #9f68d4;
+const Product = styled.div`
+  color: #67a167;
+  background-color: transparent;
+
+  :visited {
+    color: #67a167;
     background-color: transparent;
     text-decoration: none;
   }
@@ -24,16 +29,14 @@ const ListContainer = styled.div`
 const List = () => {
   const data = useStoreState((state) => state.products.items);
 
-  console.log("component", data);
-
   return (
-    <ListContainer>
+    <ListContainer data-testid="list">
       {data.map((item) => (
-        <Link to={`product/${item.id}`}>
-          <div key={item.id}>
+        <LinkStyle key={item.id} to={`product/${item.id}`}>
+          <Product key={item.id}>
             {item.name} -- {item.price} SEK
-          </div>
-        </Link>
+          </Product>
+        </LinkStyle>
       ))}
     </ListContainer>
   );

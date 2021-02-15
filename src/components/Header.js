@@ -11,15 +11,15 @@ const HeaderContainer = styled.div`
   padding: 15px 35px;
   overflow: hidden;
   background-color: black;
-  color: white;
+  color: #86d186;
   a:link {
-    color: white;
+    color: #86d186;
     background-color: transparent;
     text-decoration: none;
   }
 
   a:visited {
-    color: #9f68d4;
+    color: #86d186;
     background-color: transparent;
     text-decoration: none;
   }
