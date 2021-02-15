@@ -3,15 +3,16 @@ import { useStoreState } from "easy-peasy";
 import styled from "styled-components";
 
 const ToastContainer = styled.div`
-  position: absolute;
-  top: 60px;
-  right: 30px;
   color: ${(props) => (props.itemUnavailable ? "red" : "#67a167")};
+  position: absolute;
+  right: 30px;
+  top: 60px;
 `;
 
 const Toast = () => {
-  const cart = useStoreState((state) => state.cart);
+  const showAddToCart = useStoreState((state) => state.showAddToCart);
   const itemUnavailable = useStoreState((state) => state.itemUnavailable);
+  const cart = useStoreState((state) => state.cart);
 
   const [showToast, setShowToast] = useState(false);
   const initMount = useRef(true);
@@ -24,9 +25,9 @@ const Toast = () => {
       initMount.current = false;
       return;
     }
-    setShowToast(true);
+    setShowToast(showAddToCart);
     setTimeout(() => setShowToast(false), duration);
-  }, [cart]);
+  }, [cart.length]);
 
   return (
     (showToast && <ToastContainer itemUnavailable={itemUnavailable}>{message}</ToastContainer>) ||

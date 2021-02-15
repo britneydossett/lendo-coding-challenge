@@ -1,11 +1,12 @@
 {
-    "presets": [
-        [
-        "@babel/preset-react",
-        {
-            "runtime": "automatic"
-        }
-        ]
+  "presets": [
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic"
+      }
     ],
-    "plugins": ["babel-plugin-styled-components"]
+    "@babel/preset-env"
+  ],
+  "plugins": ["babel-plugin-styled-components"]
 }

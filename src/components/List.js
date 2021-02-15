@@ -10,20 +10,14 @@ const ListContainer = styled.div`
 `;
 
 const LinkStyle = styled(Link)`
-  text-decoration: none;
   box-shadow: 0px 1px 4px #888888;
   padding: 20px;
+  text-decoration: none;
 `;
 
 const Product = styled.div`
-  color: #67a167;
   background-color: transparent;
-
-  :visited {
-    color: #67a167;
-    background-color: transparent;
-    text-decoration: none;
-  }
+  color: #67a167;
 `;
 
 const List = () => {

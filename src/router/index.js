@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import List from "../components/List";
-import Product from "../components/Product";
+import Details from "../components/Details";
 import Cart from "../components/Cart";
 import Header from "../components/Header";
 
@@ -11,7 +11,7 @@ const routes = [
   },
   {
     path: "/product/:id",
-    component: Product,
+    component: Details,
   },
   {
     path: "/cart",

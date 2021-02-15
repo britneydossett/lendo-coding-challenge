@@ -3,22 +3,23 @@ import { useStoreState } from "easy-peasy";
 import { NavLink } from "react-router-dom";
 
 const HeaderContainer = styled.div`
+  background-color: black;
+  border-bottom: 1px solid black;
+  color: #86d186;
   display: flex;
   flex-shrink: 0;
   justify-content: space-between;
-  border-bottom: 1px solid black;
   max-height: 20px;
-  padding: 15px 35px;
   overflow: hidden;
-  background-color: black;
-  color: #86d186;
-  a:link {
-    color: #86d186;
-    background-color: transparent;
-    text-decoration: none;
-  }
+  padding: 15px 35px;
+`;
 
-  a:visited {
+const LinkStyle = styled(NavLink)`
+  background-color: transparent;
+  color: #86d186;
+  text-decoration: none;
+
+  :visited {
     color: #86d186;
     background-color: transparent;
     text-decoration: none;
@@ -30,8 +31,8 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <NavLink to="/">Products</NavLink>
-      <NavLink to="/cart">CART: {itemsInCartCount}</NavLink>
+      <LinkStyle to="/">Products</LinkStyle>
+      <LinkStyle to="/cart">CART: {itemsInCartCount}</LinkStyle>
     </HeaderContainer>
   );
 };

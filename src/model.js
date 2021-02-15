@@ -11,6 +11,7 @@ const removeProduct = (data, id) => {
 export default {
   products,
   cart: [],
+  showAddToCart: false,
 
   // GETTERS
   itemsInCartCount: computed((state) => Object.keys(state.cart).length),
@@ -32,6 +33,13 @@ export default {
       // current total = the price * (updated) quantity of that product.
       cartProduct.total = cartProduct.quantity * parseInt(cartProduct.price, 10);
       // after this happens, getTotal (computed) above, will update the cartTotal due to the cart state changing.
+    }
+  ),
+
+  onAddToCart: actionOn(
+    (actions) => actions.addToCart,
+    (state) => {
+      state.showAddToCart = true;
     }
   ),
 
